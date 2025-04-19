@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   # Configuration options
   project = "credible-skill-449404-i8"
-  credentials = file(key.json)
+  credentials = "${file("key.json")}"
 }
 resource "google_service_account" "default" {
   account_id   = "my-custom-sa"
