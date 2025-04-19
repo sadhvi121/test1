@@ -12,11 +12,11 @@ provider "google" {
   project = "credible-skill-449404-i8"
   credentials = "${file("key.json")}"
 }
-resource "google_service_account" "default" {
-  account_id   = "my-custom-sa"
-  project = "credible-skill-449404-i8"
-  display_name = "Custom SA for VM Instance"
-}
+#resource "google_service_account" "default" {
+ # account_id   = "my-custom-sa"
+ # project = "credible-skill-449404-i8"
+  #display_name = "Custom SA for VM Instance"
+#}
 
 resource "google_compute_instance" "default" {
   name         = "my-instance"
@@ -53,9 +53,5 @@ resource "google_compute_instance" "default" {
 
   metadata_startup_script = "echo hi > /test.txt"
 
-  service_account {
-    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.default.email
-    scopes = ["cloud-platform"]
-  }
+  
 }
